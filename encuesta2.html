@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario de Gramática en Inglés</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .question label {
+            margin-left: 10px;
+        }
+        .question input {
+            margin-right: 10px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cuestionario de Gramática en Inglés</h1>
+    <form id="quizForm" action="#" method="post">
+        <div class="question">
+            <h2>1. ¿Cuál de las siguientes es una forma correcta de usar un modal de cortesía?</h2>
+            <input type="radio" id="can" name="modal" value="can">
+            <label for="can">Can you help me?</label><br>
+            <input type="radio" id="must" name="modal" value="must">
+            <label for="must">Must you help me?</label><br>
+            <input type="radio" id="could" name="modal" value="could">
+            <label for="could">Could you please help me?</label><br>
+        </div>
+
+        <div class="question">
+            <h2>2. Elige el comparativo correcto:</h2>
+            <input type="radio" id="bigger" name="comparative" value="bigger">
+            <label for="bigger">This house is bigger than that one.</label><br>
+            <input type="radio" id="morebig" name="comparative" value="morebig">
+            <label for="morebig">This house is more big than that one.</label><br>
+            <input type="radio" id="mostbig" name="comparative" value="mostbig">
+            <label for="mostbig">This house is most big than that one.</label><br>
+        </div>
+
+        <div class="question">
+            <h2>3. Elige el superlativo correcto:</h2>
+            <input type="radio" id="largest" name="superlative" value="largest">
+            <label for="largest">This is the largest building in the city.</label><br>
+            <input type="radio" id="morelarger" name="superlative" value="morelarger">
+            <label for="morelarger">This is the more larger building in the city.</label><br>
+            <input type="radio" id="mostlarger" name="superlative" value="mostlarger">
+            <label for="mostlarger">This is the most larger building in the city.</label><br>
+        </div>
+
+        <div class="question">
+            <h2>4. ¿Cuál de las siguientes palabras es un cognado en inglés?</h2>
+            <input type="radio" id="hospital" name="cognate" value="hospital">
+            <label for="hospital">Hospital</label><br>
+            <input type="radio" id="embarazada" name="cognate" value="embarazada">
+            <label for="embarazada">Embarazada</label><br>
+            <input type="radio" id="actual" name="cognate" value="actual">
+            <label for="actual">Actual</label><br>
+        </div>
+
+        <button type="button" class="button" onclick="checkAnswers()">Enviar Respuestas</button>
+    </form>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            const resultDiv = document.getElementById('result');
+            
+            // Respuestas correctas
+            const correctAnswers = {
+                modal: 'could',
+                comparative: 'bigger',
+                superlative: 'largest',
+                cognate: 'hospital'
+            };
+
+            // Comprobación de respuestas
+            const modalAnswer = document.querySelector('input[name="modal"]:checked');
+            const comparativeAnswer = document.querySelector('input[name="comparative"]:checked');
+            const superlativeAnswer = document.querySelector('input[name="superlative"]:checked');
+            const cognateAnswer = document.querySelector('input[name="cognate"]:checked');
+            
+            if (modalAnswer && modalAnswer.value === correctAnswers.modal) score++;
+            if (comparativeAnswer && comparativeAnswer.value === correctAnswers.comparative) score++;
+            if (superlativeAnswer && superlativeAnswer.value === correctAnswers.superlative) score++;
+            if (cognateAnswer && cognateAnswer.value === correctAnswers.cognate) score++;
+
+            // Mostrar el resultado
+            if (score === 4) {
+                resultDiv.innerHTML = `<p>¡Felicidades! Has acertado todas las respuestas.</p>`;
+            } else {
+                resultDiv.innerHTML = `<p>Has acertado ${score} de 4 respuestas. Intenta de nuevo.</p>`;
+            }
+        }
+    </script>
+
+</body>
+</html>
